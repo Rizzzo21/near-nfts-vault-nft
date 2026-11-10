@@ -1,0 +1,35 @@
+=== VAULT-NFT (bnty_0420) DETERMINISTIC DEMO TRANSCRIPT ===
+Chain Integrity Verified: true
+Final State Merkle Head:  72c1a6eea6c80069cf7df812557f541723bd2bc65a814ec3899aa076aa61da28
+Credential Hash:          dc1320e8839a66c3a805c15ec50449db3effae5d6816f4a674e9c4e6e969c46c
+
+[STEP 1] nft_receives_funds
+  Summary: Token #42 (vault-42.nft.near) receives 2,000 USDC gross revenue -> 90% (1,800 USDC) credited to NFT account balance, 10% (200 USDC) reserved in royalty pool
+  Metrics: {"token_id":"42","subaccount":"vault-42.nft.near","gross_inflow_usdc":2000,"nft_treasury_usdc":1800,"royalty_pool_usdc":200}
+  Hash:    f3401a97ad2aad2bf08ffc3594570a1cab6bf299ecfb111a54b00390c9eba640
+
+[STEP 2] pays_royalty
+  Summary: distributeRoyalties(#42) splits the 200 USDC royalty pool -> creator-ava.near receives 140 USDC (70%), co-author-ben.near receives 60 USDC (30%); royalty pool = 0 USDC
+  Metrics: {"token_id":"42","payouts":{"creator-ava.near":140,"co-author-ben.near":60},"remaining_royalty_pool_usdc":0}
+  Hash:    c6877b306f28def5abca2592116aa89e86fd9b59d77cf590650802da8fafc7f8
+
+[STEP 3] presents_credential
+  Summary: Token #42 holds inventory ["rig-mk3","dataset-v2"] and signs SHA-256 access credential `tier:pro-validator` -> verifyCredential() returns ok=true; after transfer to buyer-cara.near, old owner's credential presentation returns ok=false (signer_not_current_owner)
+  Metrics: {"token_id":"42","inventory":["rig-mk3","dataset-v2"],"credential_scope":"tier:pro-validator","credential_hash":"dc1320e8839a66c3a805c15ec50449db3effae5d6816f4a674e9c4e6e969c46c","current_owner_verified":true,"transferred_to":"buyer-cara.near","stale_owner_verified":false,"stale_reason":"signer_not_current_owner"}
+  Hash:    72c1a6eea6c80069cf7df812557f541723bd2bc65a814ec3899aa076aa61da28
+
+=== ON-CHAIN EVIDENCE (NEAR testnet) ===
+Contract: vnft-backstop-1110b.testnet
+Token #42 owner after transfer: vnft-buyer-1110b.testnet
+Credential hash: 12feef2c11c349c061b7009678e77b8da2066dda0436886a87d06fe07242a074
+Deploy:   67JhtbQi4KDt7bdfsmsBZ8LNSyywiKK2vZ4JNCmTQyf9
+Mint:     2e95KngUUpmFJMLq1YXTh8D2UeuHXj2jrSFG2xYm4jja
+Fund:     CAqAGVKJ3FpfyyogYYyyySeRDdNNZFV6gtWiLaWePdZc (1 NEAR -> 0.9 treasury / 0.1 royalty pool)
+Royalties:B9c8fibQfU9mabUEEPmLX1WjRiqgxV4B4ysX9zk2BcFQ (0.07 creator / 0.03 co-author)
+Credential (owner): FUjzUeEEgqxKZAjmcdUZp9YRKMM57wDUKRNwTy9HsxMw (ok=true)
+Transfer: 5MThwo19N7sXP3A6raTzYx51kJXAJwbAyHRJNf5qLz27 (to vnft-buyer-1110b.testnet)
+Stale credential: FkabD5EGxrtuVuWtbq91rHWB3oSaxXviV79eMw7wDQXe (REFUSED: signer_not_current_owner)
+Credential (buyer): CwbSBHR3cdfPAGrMpBc6KPVrFpjtN3tNvKytNynTdR48 (ok=true)
+Final treasury on-chain: 0.9000 NEAR
+Final royalty balances on-chain: creator 0.0700 NEAR, co-author 0.0300 NEAR
+Explorer: https://explorer.testnet.near.org/accounts/vnft-backstop-1110b.testnet

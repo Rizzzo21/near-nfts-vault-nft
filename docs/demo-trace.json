@@ -1,0 +1,64 @@
+{
+  "track": "VAULT-NFT",
+  "bountyId": "bnty_0420",
+  "eventCount": 3,
+  "headHash": "72c1a6eea6c80069cf7df812557f541723bd2bc65a814ec3899aa076aa61da28",
+  "chainVerified": true,
+  "events": [
+    {
+      "index": 0,
+      "step": "nft_receives_funds",
+      "payload": {
+        "summary": "Token #42 (vault-42.nft.near) receives 2,000 USDC gross revenue -> 90% (1,800 USDC) credited to NFT account balance, 10% (200 USDC) reserved in royalty pool",
+        "metrics": {
+          "token_id": "42",
+          "subaccount": "vault-42.nft.near",
+          "gross_inflow_usdc": 2000,
+          "nft_treasury_usdc": 1800,
+          "royalty_pool_usdc": 200
+        }
+      },
+      "prevHash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "hash": "f3401a97ad2aad2bf08ffc3594570a1cab6bf299ecfb111a54b00390c9eba640"
+    },
+    {
+      "index": 1,
+      "step": "pays_royalty",
+      "payload": {
+        "summary": "distributeRoyalties(#42) splits the 200 USDC royalty pool -> creator-ava.near receives 140 USDC (70%), co-author-ben.near receives 60 USDC (30%); royalty pool = 0 USDC",
+        "metrics": {
+          "token_id": "42",
+          "payouts": {
+            "creator-ava.near": 140,
+            "co-author-ben.near": 60
+          },
+          "remaining_royalty_pool_usdc": 0
+        }
+      },
+      "prevHash": "f3401a97ad2aad2bf08ffc3594570a1cab6bf299ecfb111a54b00390c9eba640",
+      "hash": "c6877b306f28def5abca2592116aa89e86fd9b59d77cf590650802da8fafc7f8"
+    },
+    {
+      "index": 2,
+      "step": "presents_credential",
+      "payload": {
+        "summary": "Token #42 holds inventory [\"rig-mk3\",\"dataset-v2\"] and signs SHA-256 access credential `tier:pro-validator` -> verifyCredential() returns ok=true; after transfer to buyer-cara.near, old owner's credential presentation returns ok=false (signer_not_current_owner)",
+        "metrics": {
+          "token_id": "42",
+          "inventory": [
+            "rig-mk3",
+            "dataset-v2"
+          ],
+          "credential_scope": "tier:pro-validator",
+          "credential_hash": "dc1320e8839a66c3a805c15ec50449db3effae5d6816f4a674e9c4e6e969c46c",
+          "current_owner_verified": true,
+          "transferred_to": "buyer-cara.near",
+          "stale_owner_verified": false,
+          "stale_reason": "signer_not_current_owner"
+        }
+      },
+      "prevHash": "c6877b306f28def5abca2592116aa89e86fd9b59d77cf590650802da8fafc7f8",
+      "hash": "72c1a6eea6c80069cf7df812557f541723bd2bc65a814ec3899aa076aa61da28"
+    }
+  ]
+}

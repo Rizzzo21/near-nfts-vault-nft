@@ -1,0 +1,77 @@
+{
+  "network": "testnet",
+  "contract_account": "vnft-backstop-1110b.testnet",
+  "contract_explorer": "https://explorer.testnet.near.org/accounts/vnft-backstop-1110b.testnet",
+  "contract_wasm_sha256": "4ca44f43ac73f0a0218b6c5fd6a4a6b843b6111fe3473e6aa90f865efb027755",
+  "deployed_at_utc": "2026-11-10T01:52:57.521Z",
+  "token_id": "42",
+  "buyer_account": "vnft-buyer-1110b.testnet",
+  "credential_hash": "12feef2c11c349c061b7009678e77b8da2066dda0436886a87d06fe07242a074",
+  "credential_scope": "tier:pro-validator",
+  "flow": {
+    "deploy": {
+      "tx": "67JhtbQi4KDt7bdfsmsBZ8LNSyywiKK2vZ4JNCmTQyf9",
+      "explorer": "https://explorer.testnet.near.org/transactions/67JhtbQi4KDt7bdfsmsBZ8LNSyywiKK2vZ4JNCmTQyf9"
+    },
+    "mint": {
+      "tx": "2e95KngUUpmFJMLq1YXTh8D2UeuHXj2jrSFG2xYm4jja",
+      "explorer": "https://explorer.testnet.near.org/transactions/2e95KngUUpmFJMLq1YXTh8D2UeuHXj2jrSFG2xYm4jja"
+    },
+    "fund": {
+      "tx": "CAqAGVKJ3FpfyyogYYyyySeRDdNNZFV6gtWiLaWePdZc",
+      "explorer": "https://explorer.testnet.near.org/transactions/CAqAGVKJ3FpfyyogYYyyySeRDdNNZFV6gtWiLaWePdZc",
+      "deposit_near": "1",
+      "treasury_near": "0.9",
+      "royalty_pool_near": "0.1"
+    },
+    "distribute_royalties": {
+      "tx": "B9c8fibQfU9mabUEEPmLX1WjRiqgxV4B4ysX9zk2BcFQ",
+      "explorer": "https://explorer.testnet.near.org/transactions/B9c8fibQfU9mabUEEPmLX1WjRiqgxV4B4ysX9zk2BcFQ",
+      "creator_near": "0.07",
+      "coauthor_near": "0.03"
+    },
+    "present_credential": {
+      "tx": "FUjzUeEEgqxKZAjmcdUZp9YRKMM57wDUKRNwTy9HsxMw",
+      "explorer": "https://explorer.testnet.near.org/transactions/FUjzUeEEgqxKZAjmcdUZp9YRKMM57wDUKRNwTy9HsxMw",
+      "result": null
+    },
+    "transfer": {
+      "tx": "5MThwo19N7sXP3A6raTzYx51kJXAJwbAyHRJNf5qLz27",
+      "explorer": "https://explorer.testnet.near.org/transactions/5MThwo19N7sXP3A6raTzYx51kJXAJwbAyHRJNf5qLz27"
+    },
+    "stale_credential_refused": {
+      "tx": "FkabD5EGxrtuVuWtbq91rHWB3oSaxXviV79eMw7wDQXe",
+      "explorer": "https://explorer.testnet.near.org/transactions/FkabD5EGxrtuVuWtbq91rHWB3oSaxXviV79eMw7wDQXe",
+      "error": "{\"index\":0,\"kind\":{\"index\":0,\"kind\":{\"FunctionCallError\":{\"ExecutionError\":\"Smart contract panicked: signer_not_current_owner\\n    at present_credential (build/contract.js:2764)\\n    at apply (native)\\n    at <anonymous> (build/contract.js:2471)\\n    at present_credential (build/contract.js:2792)\\n\"",
+      "note": "Recovered post-deploy: the deploy-time error message carried no tx hash (the nonce-retry replaced the original attempt). The hash was recovered from the account transaction list (api-testnet.nearblocks.io/v3/accounts/vnft-backstop-1110b.testnet/txns) and confirmed via /v3/txns/{hash}/receipts, whose failure receipt 6zCjXAQyUxpDqSMxVTJfpqQT4NPrQmA4MwQWVJVXrsgh matches the deploy log."
+    },
+    "buyer_credential": {
+      "tx": "CwbSBHR3cdfPAGrMpBc6KPVrFpjtN3tNvKytNynTdR48",
+      "explorer": "https://explorer.testnet.near.org/transactions/CwbSBHR3cdfPAGrMpBc6KPVrFpjtN3tNvKytNynTdR48",
+      "result": null
+    }
+  },
+  "final_state": {
+    "token_id": "42",
+    "owner_id": "vnft-buyer-1110b.testnet",
+    "treasury_yocto": "900000000000000000000000",
+    "royalty_pool_yocto": "0",
+    "inventory": [
+      "rig-mk3",
+      "dataset-v2"
+    ],
+    "credential_hash": "6579674454ace3fbe3e3d5686d70a671bebf0971ab33962614c7c0ae937da8ab",
+    "total_supply": 1,
+    "balances": {
+      "creator-ava.near": "70000000000000000000000",
+      "co-author-ben.near": "30000000000000000000000"
+    }
+  },
+  "verified_figures": {
+    "treasury_near": "0.9000",
+    "creator_balance_near": "0.0700",
+    "coauthor_balance_near": "0.0300",
+    "owner_after_transfer": "vnft-buyer-1110b.testnet"
+  },
+  "disclosure": "On-chain amounts are testnet NEAR; the demo scenario figures (2,000 USDC gross, 1,800 treasury, 200 pool, 140/60 split) are the off-chain accounting model run through the same split logic. Royalty payouts are recorded in the contract internal ledger (creator-ava.near / co-author-ben.near are ledger keys, not funded accounts). The credential is a hash-bound presentation, not a signed verifiable credential."
+}
