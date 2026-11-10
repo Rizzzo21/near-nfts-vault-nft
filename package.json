@@ -1,0 +1,15 @@
+{
+  "description": "VAULT-NFT - NEP-171 token-bound account NFTs that own money, split royalties, hold inventory, and present credentials",
+  "devDependencies": {
+    "near-api-js": "^5.1.1",
+    "near-sdk-js": "^2.0.0"
+  },
+  "license": "MIT",
+  "name": "@near-contest/nep-account-nft",
+  "scripts": {
+    "demo": "node scripts/demo.mjs",
+    "test": "node --test test/engine.test.mjs"
+  },
+  "type": "module",
+  "version": "1.0.0"
+}
