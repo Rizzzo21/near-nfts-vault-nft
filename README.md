@@ -5,7 +5,7 @@ Standard NFTs are passive metadata pointers; agents and creators need NFTs that 
 
 ## Prerequisites
 - **Node.js 20+** (tested on Node v24.22.1). The demo and tests use the Node.js standard library only.
-- For the testnet deploy only: `npm install` (pulls `near-api-js` for the deploy scripts and `near-sdk-js` for the contract build).
+- For the testnet deploy only: `npm install --include=dev` (pulls `near-api-js` for the deploy scripts and `near-sdk-js` for the contract build; `--include=dev` is needed because a shell with `NODE_ENV=production` set makes a plain `npm install` skip devDependencies entirely).
 
 ## 2. Try It ('Do X -> See Y' Deterministic Steps)
 ```bash
@@ -45,7 +45,7 @@ Final on-chain state: token #42 owned by `vnft-buyer-1110b.testnet`; treasury 0.
 
 ## 5. Deploy to Testnet (reproduce the on-chain evidence)
 ```bash
-npm install
+npm install --include=dev
 # 1. Build the contract (near-sdk-js). The build must run from the
 #    contract/ directory with node_modules reachable there:
 cd contract && ln -s ../node_modules node_modules
@@ -63,7 +63,7 @@ node scripts/deploy-testnet.mjs [your-account.testnet] [buyer-account.testnet]
 This writes `docs/testnet-evidence.json` with the contract account, credential hashes, and every tx hash. Testnet only — no real money, no mainnet keys.
 
 ## 6. Plain Disclosure
-- **Zero External Dependencies** for the demo and tests: Node.js standard library only (`node:crypto`, `node:test`, `node:assert`, `node:fs`). The contract build and deploy scripts use `near-sdk-js` / `near-api-js` as dev tooling.
+- **Zero External Dependencies for the whole verification path**: the engine, the demo, the tests **and** `docs/verify.sh` use the Node.js standard library (`node:crypto`, `node:test`, `node:assert`, `node:fs`) only — the evidence-file check in `docs/verify.sh` is Node, not Python, so `bash docs/verify.sh` runs on a machine with nothing but Node.js installed. The contract build and deploy scripts use `near-sdk-js` / `near-api-js` as dev tooling, and those are needed only for the on-chain steps, not for verification.
 - **No Secrets or Network Calls** in the deterministic demo (`bash docs/verify.sh` -> `ALL CHECKS PASSED`).
 - **Computed figures**: the fund split, royalty split, NEP-199 payout, and credential hash are all computed at runtime; the tests pin them against independently computed known answers. The demo scenario amounts (2,000 USDC) are the off-chain accounting model; the on-chain flow moves testnet NEAR through the same split logic.
 - **Royalty payouts, honestly**: on-chain royalty payouts are recorded in the contract's internal ledger (`creator-ava.near` / `co-author-ben.near` are ledger keys, not funded accounts). A production deployment would transfer real tokens to the recipients.
